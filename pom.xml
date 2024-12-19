@@ -12,7 +12,15 @@
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <spring-boot.version>2.7.18</spring-boot.version>
+        <spring-boot.version>2.7.18</spring-boot.version><!--2.X最后一个版本-->
+        <hutoolVersion>5.8.34</hutoolVersion><!--新-->
+        <bouncyCastleVersion>1.66</bouncyCastleVersion><!--查阅官网文档,在hutool4.2.1版本后,`bouncy.castle.version`版本号需要设置为1.66而非1.68;-->
+        <screwCoreVersion>1.0.5</screwCoreVersion><!--截止2024-12-20依然是1.0.5最新-->
+        <swaggerVersion>2.10.5</swaggerVersion><!--整合皮肤包knife4j时文档推荐的版本-->
+        <knife4jVersion>4.4.0</knife4jVersion><!--整合knife4j时文档推荐的版本-->
+        <easyExcelVersion>4.0.3</easyExcelVersion><!--截止2024-12-20最新版4.0.3-->
+        <velocityVersion>2.3</velocityVersion><!--截止2024-12-20最新版2.3-->
+        <zip4jVersion>2.11.5</zip4jVersion><!--截止2024-12-20最新版2.11.5-->
     </properties>
     <dependencies>
         <!--WEB项目-->
@@ -20,26 +28,83 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <!--开发工具-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
+        <!--自动配置-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
         </dependency>
+        <!--lombok-->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
+        <!--测试-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+        <!--Hutool是一个小而全的Java工具类库，通过静态方法封装，降低相关API的学习成本，提高工作效率，使Java拥有函数式语言般的优雅，让Java语言也可以“甜甜的”。-->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>${hutoolVersion}</version>
+        </dependency>
+        <!-- bouncy castle : hutool 加解密时需要的依赖 -->
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcprov-jdk15to18</artifactId>
+            <version>${bouncyCastleVersion}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/cn.smallbun.screw/screw-core 数据库字典生成 -->
+        <dependency>
+            <groupId>cn.smallbun.screw</groupId>
+            <artifactId>screw-core</artifactId>
+            <version>${screwCoreVersion}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>${swaggerVersion}</version>
+        </dependency>
+        <!--Swagger2的皮肤包 https://doc.xiaominfo.com/docs/quick-start -->
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>knife4j-openapi2-spring-boot-starter</artifactId>
+            <version>${knife4jVersion}</version>
+        </dependency>
+        <!--截止2024-12-20最新版4.0.3-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>easyexcel</artifactId>
+            <version>${easyExcelVersion}</version>
+        </dependency>
+        <!-- 模板引擎 freemarker -->
+        <dependency>
+            <groupId>org.freemarker</groupId>
+            <artifactId>freemarker</artifactId>
+        </dependency>
+        <!-- 模板引擎 velocity -->
+        <dependency>
+            <groupId>org.apache.velocity</groupId>
+            <artifactId>velocity-engine-core</artifactId>
+            <version>${velocityVersion}</version>
+        </dependency>
+        <!--好用的Java压缩包工具-->
+        <dependency>
+            <groupId>net.lingala.zip4j</groupId>
+            <artifactId>zip4j</artifactId>
+            <version>${zip4jVersion}</version>
         </dependency>
     </dependencies>
     <dependencyManagement>
